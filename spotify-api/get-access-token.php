@@ -4,9 +4,11 @@
 
   $info = json_decode(file_get_contents("php://input"), true);
 
-  if (!isset($info) || !isset($info['clientID']) || $info['clientID'] != "{{CLIENT_ID}}"){
+  if (!isset($info) || !isset($info['clientID'])) {
     echo json_encode(["error" => "Missing Client ID"]);
-
+    die();
+  } else if ($info['clientID'] != "{{CLIENT_ID}}"){
+    echo json_encode(["error" => "Invalid Client ID"]);
     die();
   }
 
