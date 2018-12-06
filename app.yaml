@@ -1,0 +1,10 @@
+runtime: php55
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /get-token
+  script: spotify-api/get-access-token.php
+
+- url: /.*
+  script: error.php
